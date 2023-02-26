@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="BBC Test Regression Suite" thread-count="5"
+	   parallel="tests" verbose="4">
+
+	<listeners>
+		<listener
+				class-name="com.qa.bbc.listeners.ExtentReportListener" />
+
+	</listeners>
+
+	<test name="Commenting for SignedOut User">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="com.qa.bbc.tests.VerifyCommentingSignedoutUserTest" />
+		</classes>
+	</test>
+
+	<test name="Commenting for SignedIn User">
+		<parameter name="browser" value="safari" />
+		<classes>
+			<class name="com.qa.bbc.tests.VerifyCommentingSignedUserTest" />
+		</classes>
+	</test>
+
+</suite>

@@ -1,0 +1,76 @@
+Feature: Verify Comments Section on BBC Sports Articles
+
+@automation
+  Scenario: Verify that signed-in user can view and add comments in Article
+    Given I am on the BBC website
+    When I click on the Sign in button and enter my login credentials
+    And I navigate to the sports section of the website
+    And I select an article with a comment icon
+    And I click on the comment icon in the article page
+    And I click on view comments
+    And I set my display name if prompted
+    Then I should see that the comments section is enabled
+
+@automation
+  Scenario: Verify that Signed-out users can only view comments and must sign-in to add comments in Article
+    Given I am on the BBC website
+    When I navigate to the sports section of the website
+    And I select an article with a comment icon
+    And I click on the comment icon in the article page
+    And I click on view comments
+    Then I should see a prompt to Sign in or Register
+    And I click on the Sign in button and enter my login credentials
+    And I click on the comment icon in the article page
+    And I click on view comments
+    And I set my display name if prompted
+    Then I should see that the comments section is enabled
+
+@manual
+    Scenario: View Latest Sports News and Article
+    Given I am a signed-in user
+    When I navigate to the BBC Sports page
+    Then I should see the latest sports news and articles
+
+@manual
+    Scenario: Verify no comments icon for an article without comments enabled
+    Given I am a signed-in user on the BBC Sports page
+    When I select an article without comments enabled
+    Then I should not see a small comment icon in article page
+
+@manual
+    Scenario: Verify no comments section for an article without comments enabled
+    Given I am a signed-in user on the BBC Sports page
+    When I select an article without comments enabled
+    Then I should not see the view comments section in article page
+
+@manual
+    Scenario: Verify that signed-in user can reply to any comments in Article
+    Given I am a signed-in user on the BBC Sports page
+    When I select an article with comments enabled
+    And I navigate to the comments section and view the comments
+    Then I should see that the reply option is enabled for any comments in the article page
+
+@manual
+    Scenario: View Latest Sports News and Article
+    Given I am a signed-out user
+    When I navigate to the BBC Sports page
+    Then I should see the latest sports news and articles
+
+@manual
+    Scenario: Verify no comments icon for an article without comments enabled
+    Given I am a signed-out user on the BBC Sports page
+    When I select an article without comments enabled
+    Then I should not see a small comment icon in article page
+
+@manual
+    Scenario: Verify no comments section for an article without comments enabled
+    Given I am a signed-out user on the BBC Sports page
+    When I select an article without comments enabled
+    Then I should not see the view comments section in article page
+
+@manual
+    Scenario: Verify that Signed-out users can only view comments and must sign-in to reply to any comments in Article
+    Given I am a signed-out user on the BBC Sports page
+    When I select an article with comments enabled
+    And I navigate to the comments section and view the comments
+    Then I should see a message indicating that I must sign in to reply to any comments in the article page
