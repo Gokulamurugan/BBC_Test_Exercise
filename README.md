@@ -17,7 +17,7 @@ Language : Java
 **Steps to Execute Tests from CLI**
 
 *To execute the tests from the command-line interface, follow these steps:*
-1. Clone the GitHub project using the command git clone "<repository URL>".
+1. Clone the GitHub project using the command **git clone https://github.com/Gokulamurugan/BBC_Test_Exercise.git**
 2. Open a terminal window from the cloned project directory. 
 3. To compile the application, run the command: **mvn clean**
 4. Set the environment variable "PLAYWRIGHT_JAVA_SRC = src\test\java" to get the trace files of the test report.
